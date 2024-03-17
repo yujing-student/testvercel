@@ -14,6 +14,8 @@ app.set('views', '../views')
 import fetchJson from '../helpers/fetch-json.js'
 const messages = []
 
+app.use(express.static('../public'))
+
 
 const allData_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_houses')
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
