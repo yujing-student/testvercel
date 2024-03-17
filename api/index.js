@@ -8,18 +8,6 @@ app.set('views', path.join(__dirname, '../views'))
 const messages = []
 
 
-//fetchson is the function and url and playload zijn de optionele parameters die meegegeven worden
-async function fetchJson(url, payload = {}) {
-	try{//de reden voor een try and catch is zotat er een betere error adhandeling is en dat ik de error in de console log kan zien
-		//en de then als die niet reageert dan gaat die automatisch naar de catch
-		return await fetch(url, payload)
-			.then((response) => response.json())//reageeer op de aanroep en pas de informatie aan aar een json
-
-	}catch (error){
-		console.error('Error:', error);
-	}
-
-}
 
 const allData_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_houses')
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
