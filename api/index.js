@@ -1,17 +1,23 @@
-const path = require('path')
-const express = require('express')
+
+// Importeer het npm pakket express uit de node_modules map
+import express from 'express'
+import path from "path"
+
+
+// Importeer de zelfgemaakte functie fetchJson uit de/helpers map
+
+
 const app = express()
 
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, '../views'))
-
+app.set('views', '../views')
+import fetchJson from '../helpers/fetch-json.js'
 const messages = []
 
 
 const allData_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_houses')
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list')
-
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));
@@ -169,4 +175,3 @@ app.listen(app.get('port'), function () {
 	console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
-module.exports = app
