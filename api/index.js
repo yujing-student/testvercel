@@ -9,7 +9,7 @@ const messages = []
 
 
 //fetchson is the function and url and playload zijn de optionele parameters die meegegeven worden
-export default async function fetchJson(url, payload = {}) {
+async function fetchJson(url, payload = {}) {
 	try{//de reden voor een try and catch is zotat er een betere error adhandeling is en dat ik de error in de console log kan zien
 		//en de then als die niet reageert dan gaat die automatisch naar de catch
 		return await fetch(url, payload)
@@ -20,8 +20,10 @@ export default async function fetchJson(url, payload = {}) {
 	}
 
 }
+
 const allData_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_houses')
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
+
 const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list')
 app.get('/', async function (request, response) {
 	// Haal alle personen uit de WHOIS API op
