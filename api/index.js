@@ -44,7 +44,7 @@ app.get('/', async function (request, response) {
 			return true_or_false;
 		});
 
-		response.render('index', {
+		response.render('../views/index', {
 			datahouse: filterHouses,
 			messages: messages,
 			houses: allData_houses.data
@@ -64,7 +64,7 @@ app.post('/', function (request, response) {
 
 
 	// gebruik maken van house zodat je de data kan oproepen
-	response.redirect('/Detailpage/' + request.body.id);/*het bericht moet weergegeven worden op deze pagina daarom is er een request*/
+	response.redirect('../views//Detailpage/' + request.body.id);/*het bericht moet weergegeven worden op deze pagina daarom is er een request*/
 
 })
 // `/Detailpage/${request.params.id}`
@@ -80,7 +80,7 @@ app.get('/Detailpage/:id', function (request, response) {
 			if (apiData.data) {/*als data voer dan dit uit */
 				// console.log('data bestaat u gaat nu naar de Detailpage page' + JSON.stringify(apiData))
 				// info gebruiken om die te linken aan apidata.data
-				response.render('Detailpage', {
+				response.render('../views/Detailpage', {
 					house: apiData.data, images:
 					favorite_houses.data, messages: messages
 				});
@@ -106,7 +106,7 @@ app.post('/Detailpage/:id/', function (request, response) {
 		.then((patchresponse) => {
 			// voer dit uit
 			console.log(patchresponse);
-			response.redirect(303, '/Detailpage/' + request.params.id)
+			response.redirect(303, '../views/Detailpage/' + request.params.id)
 		})
 
 })
@@ -138,7 +138,7 @@ app.get('/favorite-list', function (request, response) {
 						// info gebruiken om die te linken aan apidata.data
 
 
-						response.render('favorite-list', {
+						response.render('../views/favorite-list', {
 							favorite_houses:
 							favorite_houses.data,
 							allhouses: allData_houses.data,
