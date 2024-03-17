@@ -7,7 +7,7 @@ app.set('views', path.join(__dirname, '../views'))
 
 app.get('/', (req, res) => {
 	res.render('index', {
-		text: 'Vercel met EJS en Node. For free :)',
+		text: 'Vercel met EJS en Node.test :)',
 	})
 })
 
