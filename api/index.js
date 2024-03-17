@@ -12,7 +12,8 @@ const messages = []
 const allData_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_houses')
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list')
-
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}));
 app.get('/', async function (request, response) {
 	// Haal alle personen uit de WHOIS API op
 	// hier werkt de zoekfunite niet helemaal zoals gehoopt scroll naar het einde van de pagina
