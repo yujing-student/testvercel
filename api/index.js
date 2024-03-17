@@ -1,6 +1,5 @@
 const path = require('path')
 const express = import('express')
-const fetchJson = import("../helpers/fetch-json");
 const app = express()
 
 app.set('view engine', 'ejs')
