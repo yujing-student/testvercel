@@ -25,11 +25,7 @@ app.set('views', path.join(__dirname, '../views'))
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));//deze regel code gebruiken vanwege middelware zodat de data leesbaar gemaakt word
-async function fetchjson_url() {
-	const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list');
-}
 
-fetchjson_url()
 
 app.get('/', async function (request, response) {
 	const url = `https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*`;
@@ -59,6 +55,60 @@ app.get('/', async function (request, response) {
 		console.error('Error fetching house data:', error);
 	}
 });
+
+app.get('/lijsten/:id', function (request, response) {
+	const listId = request.params.id;
+	// console.log('Fetching data for list ID:', listId);
+
+
+	fetchJson(`https://fdnd-agency.directus.app/items/f_list/${listId}?fields=*.*.*`)
+		.then((apiData) => {
+			if (apiData.data && apiData.data.houses) { // Checken of deze 2 bestaan
+				response.render('lijst.ejs',
+					{
+						list: apiData.data,
+						houses: apiData.data.houses
+					});
+			}
+		})
+		.catch((error) => {
+			console.error('Error fetching house data:', error);
+		});
+});
+
+app.get('/Detailpage/:id', function (request, response) {
+	const id = request.params.id
+
+	fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${id}/?fields=*.*.*`)
+
+
+		.then((apiData) => {
+			// request.params.id gebruik je zodat je de exacte student kan weergeven dit is
+			// een routeparmater naar de route van die  specifieke persoon
+			if (apiData.data) {/*als data voer dan dit uit */
+				// console.log('data bestaat u gaat nu naar de Detailpage page' + JSON.stringify(apiData))
+				// info gebruiken om die te linken aan apidata.data
+
+				// console.log(JSON.stringify(favorite_houses.data));
+				response.render('Detailpage', {
+					house: apiData.data
+
+				});
+
+			} else {
+				console.log('No data found for house with id: ' + request.params.id);
+				//     laat de error zien als de data al niet gevonden word
+			}
+		})
+		.catch((error) => {
+			console.error('Error fetching house data:', error);
+		});
+});
+
+
+
+
+
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 
