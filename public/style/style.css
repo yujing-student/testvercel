@@ -1,6 +1,6 @@
 @font-face {
     font-family: "proximanova";
-    src: url("public/assets/font/ProximaNova-Regular_2607783814.otf");
+    src: url("/public/assets/font/ProximaNova-Regular_2607783814.otf");
 }
 
 html {
@@ -11,6 +11,7 @@ body {
     margin: 0 auto;
     font-family: proximanova, sans-serif;
     width: 100%;
+    line-height: 1.5em;
 }
 
 * {
@@ -24,236 +25,152 @@ body {
     --white: #ffffff;
     --orange: #F7A100;
     --black: #333333;
+    --gray: #dddddd;
 
     --margin-input-fields: 0 0 1em 0;
     --margin-2-em: 2em;
 }
 
+main {
+    margin: 2em 2em 2em 1em;
 
-header {
-    background-color: var(--orange
-    );
-    position: relative;
-    color: var(--black);
-
-}
-
-.log-funda {
-    width: 150px;
-
-}
-
-.menu-ul, .menu-ul-second {
-    display: none;
-}
-
-.menu-ul-open {
-    display: block;
-    margin: 1em 0 0 0;
-}
-
-.menu-ul-second-open {
-
-    margin: -1em 0 0 0;
-}
-
-.header-menu-open {
-    height: 15em;
-}
-
-.menu {
-    background-color: var(--orange
-    );
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hamburger-icon {
-    position: relative;
-    left: 2em;
-    background-color: var(--orange);
-    top: -1em;
-    border: none;
-}
-
-
-.login-button {
-    background-color: var(--orange);
-}
-
-.iconlogin {
-    margin-bottom: 2em;
-}
-
-.hamburger-icon:hover {
-    background-color: var(--blue);
-    border: none;
-}
-
-.menu-link {
-    color: var(--black);
-    text-decoration: none;
-}
-
-
-a:hover {
-    text-decoration-line: underline;
-}
-
-.filter-section {
-
-    margin: 2em 0 0 2em;
-    max-width: 29em;
-
-}
-
-.styling-searchbutton {
-    background-color: var(--orange);
-    border: none;
-    font-size: 1.2em;
-
-}
-
-#filters {
-    font-size: 0.9em;
-}
-
-article {
-    border: 1px solid #ddd;
-    margin: 1em 2em 0 0;
-    max-width: 21em;
-
-
-}
-
-.link-to-detail {
-    text-decoration-line: none;
-    font-size: 1.2em;
-    color: var(--blue);
-}
-
-.favoriteButton {
-    background-color: transparent;
-    border: none;
-    margin-inline: -0.7em;
-}
-
-.heart-image {
-    /*font-size: 1em;*/
-    width: 2.4em;
-}
-
-.image-size {
-    width: 230px;
-}
-
-.wonen {
-    /*margin-top: 0.5em;*/
-    margin: 0.5em 0 0 0;
-
-}
-
-.icons-house {
-    margin: 0 0.8em 0 0;
-    font-size: 1.1em;
-}
-
-.grid-items-house {
-    display: grid;
-    row-gap: 6px;
-    max-width: 16em;
-}
-
-.beschrijving {
-    font-size: 1.5em;
 }
 
 li {
     list-style-type: none;
 }
 
-@media only screen and (min-width: 650px) {
-    header {
-        background-color: var(--orange);
-        display: flex;
-        align-items: center;
-        color: var(--black);
-        max-width: 100%;
-        justify-content: space-between;
-        height: 5em;
-    }
-
-    .log-funda {
-        top: -5px
-    }
-
-    .iconlogin {
-        margin-bottom: 0em;
-    }
-
-    .menu {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .menu-ul {
-        display: flex;
-        row-gap: 1em;
-        flex-direction: row;
-
-    }
-
-    .header-menu a.log-funda {
-        margin-right: 1em;
-    }
-
-    .li-tems-menu {
-        margin-right: 1em;
-    }
-
-    a.log-funda {
-        margin-right: 2em;
-    }
-
-    .hamburger-icon {
-        display: none;
-    }
+.users_section {
+    margin: 2em;
 }
 
-.search-tekst {
-    font-size: 1.4em;
+.output_other_users {
+    padding: 0;
 }
 
-.list-houses {
+
+.user_profiles {
+    width: 150px;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+
+.grid_container_houses_lijst {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /*iedere keer word er een colum toegevoegd van 300px en blijft er een ruimte van 1fr over*/
-    grid-gap: 44px;
-    border-top: solid #dddddd;
-    margin: 2em 2em 0 2em;
+    grid-template-columns: auto;
+    gap: 1em;
+    margin: 1em;
 }
 
-.grid-items-house {
-
-    max-width: 17em;
-}
-
-.grid-items-house li {
+.houses {
+    padding-right: 1em;
+    margin-inline: 2em;
+    box-sizing: border-box;
+    border: solid var(--gray) 0.2em;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.heart {
-    display: flex;
-    justify-content: flex-start;
+.image_house_data {
+    display: grid;
+    gap: 0.5em;
+    padding-right: 2em;
+    width: 17em;
+}
 
+.image_size {
+    width: 100%;
+    object-fit: cover;
 }
 
 
-@media (min-width: 1000px) {
-    .list-houses {
-        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+.child_li_house_card {
+    height: 1.2em;
+    line-height: 1.5em;
+    /*    hoogte bepalen van de tekstbinnen de kaart van ieder li element*/
+}
+
+.price_li {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.agent_long_text {
+    height: 3em;
+}
+
+.special_link {
+    margin-top: 2em;
+    color: var(--blue);
+    font-size: 1.1em;
+}
+
+.button_score_page {
+    background-color: transparent;
+    font-size: 1.1em;
+    padding: 0;
+    border: none;
+}
+
+@media (width >= 400px) {
+    .grid_container_houses_lijst {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 26em);
+        /*autofit betekend dat iedere colum afgesteld word aa de minimale breeedte
+         van het element zelf en de content en de maximun is 26 em*/
+        row-gap: 3em;
+        margin: 2em;
     }
+
+    .image_house_data {
+        padding-right: 3em;
+    }
+
+    .houses {
+        width: 22em;
+        height: fit-content;
+        margin-inline: 0;
+    }
+
+    .image_size {
+        object-fit: cover;
+    }
+
+    .user_profiles {
+        width: 170px;
+        padding-bottom: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+}
+
+
+@media (width >= 600px) {
+
+    .image_size {
+        width: 250px;
+        height: 183px;
+        object-fit: cover;
+
+    }
+
+    .houses {
+        padding: 0 0 0 3em;
+    }
+
+    .image_house_data {
+        padding-left: 0;
+        /*padding left default op 0 zodat het recht komt te staan */
+        display: grid;
+        gap: 0.5em;
+        padding-right: 3em;
+        width: 17em;
+        margin-top: 2em;
+    }
+
+
 }
