@@ -22,13 +22,15 @@ const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '../views'))
-
-async function main() {
+// Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}));//deze regel code gebruiken vanwege middelware zodat de data leesbaar gemaakt word
+async function fetchjson_url() {
 	const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list');
 	// ... rest of your code ...
 }
 
-main();
+fetchjson_url();
 
 app.get('/', async function (request, response) {
 	const url = `https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*`;
