@@ -2,7 +2,7 @@
   "name": "test-vercel",
   "version": "1.0.0",
   "description": "Node example",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "vercel dev"
