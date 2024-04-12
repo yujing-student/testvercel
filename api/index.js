@@ -8,11 +8,11 @@ import { dirname } from 'path';
 // Import the path module for dirname function
 // Importeer de zelfgemaakte functie fetchJson uit de/helpers map
 
-
 const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', '../views')
+
 import fetchJson from '../helpers/fetch-json.js'
 
 
@@ -39,8 +39,7 @@ app.get('/', async function (request, response) {
 
 
 		response.render('index', {
-			houses: allData_houses.data,
-			text: 'Vercel met EJS en Node. For free :)',
+			text: 'vercel werkt:)',
 			// persons: allData_houses.data,filteredimagesfirst/*hier zeg ik dat iedereen getoond moet worden*/
 		});
 		// https://dev.to/callmefarad/simple-query-search-in-node-express-api-4c0e
@@ -65,3 +64,4 @@ app.listen(app.get('port'), function () {
 	console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
+export default app;

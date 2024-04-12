@@ -1,5 +1,5 @@
 {
-  "name": "fdnd-node",
+  "name": "test-vercel",
   "version": "1.0.0",
   "description": "Node example",
   "main": "app.js",
@@ -7,7 +7,7 @@
   "scripts": {
     "start": "vercel dev"
   },
-  "author": "Daan Korver",
+  "author": "Yu Jing",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.9",
