@@ -23,11 +23,16 @@ const app = express()
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '../views'))
 
+async function main() {
+	const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list');
+	// ... rest of your code ...
+}
 
+main();
 
 app.get('/', async function (request, response) {
 	const url = `https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*`;
-	const favorite_houses = await fetchJson('https://fdnd-agency.directus.app/items/f_list')
+
 
 	try {
 		const favorite_houses = await fetchJson(url); // dit gebruiken vanwege meerdere arrays
