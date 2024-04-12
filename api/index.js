@@ -44,7 +44,7 @@ app.get('/', async function (request, response) {
 			return true_or_false;
 		});
 
-		response.render('../views/index', {
+		response.render('index', {
 			datahouse: filterHouses,
 			messages: messages,
 			houses: allData_houses.data
@@ -56,112 +56,6 @@ app.get('/', async function (request, response) {
 		response.send(err.message)
 	}
 })
-// Maak een POST route voor house
-app.post('/', function (request, response) {
-	// Er is nog geen afhandeling van POST, redirect naar GET op /
-	messages.push(request.body.bericht)/*voeg het bericht van de gerrbuiker toe aan de array*/
-	// bericht moet je gebruiken want je hebt name gebruikt bij je form
-
-
-	// gebruik maken van house zodat je de data kan oproepen
-	response.redirect('../views//Detailpage/' + request.body.id);/*het bericht moet weergegeven worden op deze pagina daarom is er een request*/
-
-})
-// `/Detailpage/${request.params.id}`
-// Maak een GET route voor een detailpagina met een request parameter id
-
-app.get('/Detailpage/:id', function (request, response) {
-	const id = request.params.id
-	fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${id}/?fields=*.*.*`)
-
-
-		.then((apiData) => {
-			// request.params.id gebruik je zodat je de exacte student kan weergeven dit si een routeparmater naar de route van die persoon
-			if (apiData.data) {/*als data voer dan dit uit */
-				// console.log('data bestaat u gaat nu naar de Detailpage page' + JSON.stringify(apiData))
-				// info gebruiken om die te linken aan apidata.data
-				response.render('../views/Detailpage', {
-					house: apiData.data, images:
-					favorite_houses.data, messages: messages
-				});
-				//     messages moet uitgevoerd worden met de meegegeven array
-
-
-			} else {
-				console.log('No data found for house with id: ' + request.params.id);
-				//     laat de error zien als de data al niet gevonden word
-			}
-		})
-		.catch((error) => {
-			console.error('Error fetching house data:', error);
-		});
-});
-
-
-app.post('/Detailpage/:id/', function (request, response) {
-	// Stap 1: Haal de huidige data op, zodat we altijd up-to-date zijn, en niks weggooien van anderen
-	// Haal eerst de huidige gegevens voor deze persoon op, uit de WHOIS API
-	const id = request.params.id
-	fetchJson(`https://fdnd-agency.directus.app/items/f_houses/Detailpage/${id}`)
-		.then((patchresponse) => {
-			// voer dit uit
-			console.log(patchresponse);
-			response.redirect(303, '../views/Detailpage/' + request.params.id)
-		})
-
-})
-
-
-app.get('/favorite-list', function (request, response) {
-	fetchJson('https://fdnd-agency.directus.app/items/f_list')
-		.then((favorite_houses) => {
-			// console.log('data bestaat u gaat nu naar de favoreiten page'+JSON.stringify(favorite_houses))
-			// request.params.id gebruik je zodat je de exacte student kan weergeven dit si een routeparmater naar de route van die persoon
-			if (favorite_houses.data) {/*als data voer dan dit uit */
-
-				// 2 arrays vergelijken die returnen true en false
-				if (favorite_houses.data.length > 0) {
-					const numbers = favorite_houses.data.map(number => number.house_id);
-					// console.log(JSON.stringify(numbers)+'nummers');
-					const flatNummers = numbers.slice();//dit word een niewe arra
-
-					// console.log(flatNummers+'refactored ummers zonder 2de haakjes weirn'); // Output: [20, 26, 28, 29, 32, 33, 34]
-
-
-					const houses = allData_houses.data.map(house => house.id)
-					// console.log(JSON.stringify(houses)+'galle huizen');
-
-
-					if (favorite_houses.data.length > 0) {
-						const secondchekc = flatNummers.every(element => houses.includes(element));//dit is true and false
-						// console.log(`Favorite houses are a subset of all houses: ${secondchekc}`);
-						// info gebruiken om die te linken aan apidata.data
-
-
-						response.render('../views/favorite-list', {
-							favorite_houses:
-							favorite_houses.data,
-							allhouses: allData_houses.data,
-							numberssaved: flatNummers
-						});
-					} else {
-						console.log("No favorite houses found.");
-					}
-
-				} else {
-					console.log("No favorite houses found.");
-				}
-
-
-			} else {
-				console.log('No data found for favortie house');
-				//     laat de error zien als de data al niet gevonden word
-			}
-		})
-		.catch((error) => {
-			console.error('Error fetching house data:', error);
-		});
-});
 
 // https://medium.com/@alizhdanov/list-manipulations-in-javascript-c77ce1f2a234
 
